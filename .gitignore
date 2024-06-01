@@ -1,0 +1,51 @@
+# Ignore build artifacts
+/build/
+
+# Ignore dependencies
+/node_modules/
+# Ignore build artifacts
+/build/
+
+# Ignore dependencies
+/node_modules/
+/.env
+
+# Ignore IDE and editor files
+/.vscode/
+/.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore package lock files
+package-lock.json
+yarn.lock
+
+# Ignore IDE and editor files
+/.vscode/
+/.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore package lock files
+package-lock.json
+yarn.lock
