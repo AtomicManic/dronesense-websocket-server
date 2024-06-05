@@ -30,7 +30,6 @@ const getIotEndpoint = async () => {
     return data.endpointAddress;
   } catch (error) {
     console.error("Failed to retrieve IoT endpoint:", error);
-    throw error;
   }
 };
 
@@ -60,15 +59,15 @@ const connectIoT = async () => {
       const toSend = { topic };
       const data = JSON.parse(payload.toString());
       if (topic == "dronesense/temp-humidity") {
-        toSend.temp = data.temp;
-        toSend.humidity = data.humidity;
+        data?.temp ? (toSend.temp = data?.temp) : null;
+        data?.humidity ? (toSend.humidity = data?.humidity) : null;
       } else if (topic == "dronesense/accelerometer") {
-        toSend.x = data.accelX;
-        toSend.y = data.accelY;
-        toSend.z = data.accelZ;
+        data?.accelX ? (toSend.x = data?.accelX) : null;
+        data?.accelY ? (toSend.y = data?.accelY) : null;
+        data?.accelZ ? (toSend.z = data?.accelZ) : null;
       } else if (topic == "dronesense/gps") {
-        toSend.lat = data.latitude;
-        toSend.lon = data.longitude;
+        data?.latitude ? (toSend.lat = data?.latitude) : null;
+        data?.longitude ? (toSend.lon = data?.longitude) : null;
       }
       console.log("Sending to frontend:", toSend);
       wss.clients.forEach(function each(client) {
@@ -78,7 +77,7 @@ const connectIoT = async () => {
       });
     });
   } catch (error) {
-    client.send("Failed to connect to AWS IoT");
+    client.send({ message: "Failed to connect to AWS IoT" });
   }
 };
 
